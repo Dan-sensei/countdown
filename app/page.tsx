@@ -28,7 +28,7 @@ export default function Home() {
             </div>
             <main className="flex flex-col flex-1 h-full items-center justify-center">
                 <div className="text-center text-xl tracking-widest text-gray-400">FIRMA DEL PISO</div>
-                <Countdown className="text-4xl lg:text-8xl" colorFrom="text-yellow-400" type="simple" targetList={list} />
+                <Countdown className="text-4xl lg:text-8xl text-white" colorFrom="text-yellow-400" type="simple" targetList={list} />
             </main>
             <div className="block lg:hidden">
 					<img
