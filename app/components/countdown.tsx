@@ -5,8 +5,8 @@ import { Spinner } from "@nextui-org/spinner";
 import { isOpened } from "@/app/lib/util";
 import React from "react";
 import clsx from "clsx";
-import { color, motion } from "framer-motion";
-import { motionShowOnView, parentStagger, parentStaggerDelay, popIn, popInRotate } from "@/app/lib/motionVariants";
+import { motion } from "framer-motion";
+import { motionShowOnView, parentStaggerDelay, popInRotate } from "@/app/lib/motionVariants";
 
 interface CountdownElement {
     value: string;
@@ -156,7 +156,7 @@ export default function Countdown({ targetList, onFinishedText, className, onFin
     const [timeLeft, setTimeLeft] = useState<TimeLeft>({ ...defTimeLeft });
     useEffect(() => {
         function calculateTimeLeft(): TimeLeft {
-            let timeLeft: TimeLeft = { ...defTimeLeft };
+            const timeLeft: TimeLeft = { ...defTimeLeft };
             const date = targetList.find((t) => {
                 return !isOpened(t);
             });
@@ -165,7 +165,7 @@ export default function Countdown({ targetList, onFinishedText, className, onFin
                 return timeLeft;
             }
             const now = new Date();
-            let difference = +new Date(date) - +now;
+            const difference = +new Date(date) - +now;
 
             if (difference > 0) {
                 const days = Math.floor(difference / (1000 * 60 * 60 * 24));
