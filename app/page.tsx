@@ -2,11 +2,31 @@
 import { DateTime } from "luxon";
 import Countdown from "./components/countdown";
 import { oxanium } from "./lib/fonts";
+import { AudioHTMLAttributes, useEffect, useRef, useState } from "react";
 
 export default function Home() {
+    const audioRef = useRef<HTMLAudioElement | null>(null);
+    const [isPlaying, setIsPlaying] = useState(false);
+
+    const toggleAudio = () => {
+        if (audioRef.current) {
+            if (isPlaying) {
+                audioRef.current.pause();
+                setIsPlaying(false);
+            } else {
+                audioRef.current.play();
+                setIsPlaying(true);
+            }
+        }
+    };
+
     const list = [DateTime.utc().set({ year: 2024, month: 12, day: 2, hour: 12, minute: 0, second: 0 }).toMillis()];
     return (
-        <div className={`${oxanium.className} relative min-h-[100vh] flex flex-col overflow-hidden`}>
+        <div onClick={toggleAudio} className={`${oxanium.className} relative min-h-[100vh] flex flex-col overflow-hidden`}>
+            <audio ref={audioRef}>
+                <source src="/THE BOYS 1x01 Soundtrack - Take You Down - DANIEL PEMBERTON.mp3" type="audio/mp3" />
+                Your browser does not support the audio element.
+            </audio>
             <div className="flex justify-center relative">
                 <div className="hidden lg:block relative min-w-[1120px] w-full pointer-events-none">
                     <img className="absolute translate-y-10 -translate-x-10 rotate-3 right-0 shadow-dark ml-auto" src="/confia.png" alt="Confia" />
