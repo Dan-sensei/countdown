@@ -2,7 +2,7 @@
 import { DateTime } from "luxon";
 import Countdown from "./components/countdown";
 import { oxanium } from "./lib/fonts";
-import { AudioHTMLAttributes, useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 export default function Home() {
     const audioRef = useRef<HTMLAudioElement | null>(null);
